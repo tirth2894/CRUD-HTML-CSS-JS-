@@ -67,17 +67,30 @@ function updatedate() {
             modal.style.display = "block";
             table.style.display = "none";
 
+            let rollno = document.getElementById("u-rollno");
+            let name = document.getElementById("u-name");
+            let gender = document.getElementById("u-gender");
+            let age = document.getElementById("u-age");
+            let birthdate = document.getElementById("u-birthdate");
+
+            rollno.value = data[index].rollno;
+            name.value = data[index].name;
+            gender.value = data[index].gender;
+            age.value = data[index].age;
+            birthdate.value = data[index].birthdate;
+
             u_submit.onclick = function () {
                 let modal = document.getElementById("u-modal");
                 let table = document.getElementById("table");
                 modal.style.display = "none";
                 table.style.display = "block";
 
-                let rollno = document.getElementById("u-rollno").value;
-                let name = document.getElementById("u-name").value;
-                let gender = document.getElementById("u-gender").value;
-                let age = document.getElementById("u-age").value;
-                let birthdate = document.getElementById("u-birthdate").value;
+                rollno = document.getElementById("u-rollno").value;
+                name = document.getElementById("u-name").value;
+                gender = document.getElementById("u-gender").value;
+                age = document.getElementById("u-age").value;
+                birthdate = document.getElementById("u-birthdate").value;
+
 
                 if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
                     alert("Please, Enter valid data..")
