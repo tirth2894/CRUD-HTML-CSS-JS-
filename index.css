@@ -185,7 +185,8 @@ table tbody td {
     }
 
     table thead th,
-    table thead td,
+    table tbody td,
+    table tbody tr,
     .btn {
         font-size: 20px;
     }
@@ -197,7 +198,8 @@ table tbody td {
     }
 
     table thead th,
-    table thead td {
+    table tbody td,table tbody tr 
+    {
         font-size: 17px;
     }
     .btn {
@@ -215,8 +217,9 @@ table tbody td {
     table thead th {
         padding: 5px 5px;
     }
+    table tbody tr,
     table thead th,
-    table thead td,
+    table tbody td,
     .box > input[placeholder],
     .modal .box,
     .box > input,
