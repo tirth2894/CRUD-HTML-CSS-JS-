@@ -1,0 +1,229 @@
+:root {
+    --bcolor: rgb(143, 6, 61);
+    --color: white;
+    --size: 23px;
+}
+
+* {
+    font-family: cursive;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: var(--bcolor);
+    padding: 15px 20px;
+}
+
+.navbar p {
+    color: white;
+    font-size: 34px;
+}
+
+.button {
+    padding: 34px;
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px;
+    color: var(--color);
+    background-color: var(--bcolor);
+    font-size: var(--size);
+    margin: 5px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px black;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.btn:active {
+    background-color: var(--bcolor);
+    color: var(--color);
+}
+
+#search {
+    border: none;
+    color: var(--bcolor);
+    border-bottom: 4px solid var(--bcolor);
+    font-size: var(--size);
+}
+
+#search:focus {
+    outline: none;
+}
+
+.table p {
+    text-align: center;
+    color: var(--bcolor);
+    font-size: 34px;
+    text-decoration: underline double;
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    flex-shrink: 4;
+}
+
+table thead th {
+    padding: 5px 50px;
+    font-size: var(--size);
+    background-color: var(--bcolor);
+    color: var(--color);
+    box-shadow: 0px 5px 10px black;
+}
+
+table tbody td {
+
+    text-align: center;
+    padding: 5px 0px;
+    font-size: var(--size);
+    box-shadow: 0px 0px 10px black;
+}
+
+.con {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color);
+    padding: 20px 0px;
+    display: none;
+}
+
+.modal form {
+    padding: 0px 34px;
+    border: 5px solid rgb(22, 11, 31);
+    background-color: var(--bcolor);
+    border-radius: 30px;
+}
+
+.modal .box {
+    margin: 25px 0px;
+    font-size: var(--size);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box>input {
+    background-color: transparent;
+    margin: 0px 5px;
+    border: none;
+    font-size: var(--size);
+    border-bottom: 4px solid var(--color);
+}
+
+.box>input:focus {
+    outline: none;
+}
+
+.box>input[placeholder] {
+    font-size: 15px;
+    color: var(--color);
+}
+
+.box>select {
+    border: 3px solid var(--color);
+    background-color: var(--bcolor);
+    border-radius: 10px;
+    color: var(--color);
+    width: 100px;
+}
+
+.box>select:focus {
+    outline: none;
+}
+
+.box>#submit,
+.box>#u-submit {
+    position: relative;
+    left: 150px;
+}
+
+.modal #close,
+.modal #u-close {
+    height: 40px;
+    width: 40px;
+    float: right;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    top: -50px;
+    left: 32px;
+}
+
+@media (max-width: 1350px) {
+    table thead th {
+        padding: 5px 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    table thead th {
+        padding: 5px 20px;
+    }
+
+    table thead th,
+    table thead td,
+    .btn {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    table thead th {
+        padding: 5px 17px;
+    }
+
+    table thead th,
+    table thead td {
+        font-size: 17px;
+    }
+    .btn {
+        padding: 6px;
+    }
+    .btn,
+    .box>input[placeholder],
+    .modal .box,
+    .box>input {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 500px) {
+    table thead th {
+        padding: 5px 5px;
+    }
+    table thead th,
+    table thead td,
+    .box > input[placeholder],
+    .modal .box,
+    .box > input,
+    .btn {
+        font-size: 12px;
+    }
+    #search {
+        font-size: 17px;
+    }
+}
