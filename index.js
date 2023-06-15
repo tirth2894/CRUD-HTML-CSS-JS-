@@ -1,20 +1,27 @@
-let temp = localStorage.getItem("udata");
-temp = JSON.parse(temp);
-console.log(temp);
-
 const data = [];
-
-for(let i = 0;i<temp.length;i++)
+let temp = localStorage.getItem("udata");
+if(temp == null)
 {
-    let t = {
-        rollno : temp[i].rollno,
-        name : temp[i].name,
-        gender : temp[i].gender,
-        age : temp[i].age,
-        birthdate : temp[i].birthdate 
-    }
-    data.push(t);
+    t = undefined;
+    localStorage.setItem("udata",JSON.stringify(t));
 }
+else{
+    temp = JSON.parse(temp);
+
+    for(let i = 0;i<temp.length;i++)
+    {
+        let t = {
+            rollno : temp[i].rollno,
+            name : temp[i].name,
+            gender : temp[i].gender,
+            age : temp[i].age,
+            birthdate : temp[i].birthdate 
+        }
+        data.push(t);
+    }
+}
+
+
 
 let close = document.getElementById("close");
 let addbtn = document.getElementById("addbtn");
@@ -161,6 +168,7 @@ submit.onclick = function () {
             alert("Student is not found..");
         }
         localStorage.setItem("udata",JSON.stringify(data));
+        
     }
     
     form.reset();
