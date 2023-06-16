@@ -1,10 +1,17 @@
 const data = [];
+
+let close = document.getElementById("close");
+let addbtn = document.getElementById("addbtn");
+let submit = document.getElementById("submit");
+let print = document.getElementById("print");
+let showbtn = document.getElementById("showbtn");
+let form = document.getElementById("form");
+let u_submit = document.getElementById("u-submit");
+let u_close = document.getElementById("u-close");
+
 let temp = localStorage.getItem("udata");
-if (temp == null) {
-    t = undefined;
-    localStorage.setItem("udata", JSON.stringify(t));
-}
-else {
+
+if (temp != null) {
     temp = JSON.parse(temp);
 
     for (let i = 0; i < temp.length; i++) {
@@ -20,22 +27,6 @@ else {
 }
 
 
-
-let close = document.getElementById("close");
-let addbtn = document.getElementById("addbtn");
-let submit = document.getElementById("submit");
-let print = document.getElementById("print");
-let showbtn = document.getElementById("showbtn");
-let form = document.getElementById("form");
-let u_submit = document.getElementById("u-submit");
-let u_close = document.getElementById("u-close");
-
-u_close.onclick = function () {
-    let modal = document.getElementById("u-modal");
-    let table = document.getElementById("table");
-    modal.style.display = "none";
-    table.style.display = "block";
-}
 addbtn.onclick = function () {
     let modal = document.getElementById("modal");
     let table = document.getElementById("table");
@@ -47,6 +38,49 @@ close.onclick = function () {
     let table = document.getElementById("table");
     modal.style.display = "none";
     table.style.display = "block";
+}
+u_close.onclick = function () {
+    let modal = document.getElementById("u-modal");
+    let table = document.getElementById("table");
+    modal.style.display = "none";
+    table.style.display = "block";
+}
+
+tabledata();
+
+submit.onclick = function () {
+    let modal = document.getElementById("modal");
+    let table = document.getElementById("table");
+    modal.style.display = "none";
+    table.style.display = "block";
+
+    let rollno = document.getElementById("rollno").value;
+    let name = document.getElementById("name").value;
+    let gender = document.getElementById("gender").value;
+    let age = document.getElementById("age").value;
+    let birthdate = document.getElementById("birthdate").value;
+
+    if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
+        alert("Please, Enter valid data..")
+    }
+    else {
+        let arr = {
+            rollno: rollno,
+            name: name,
+            gender: gender,
+            age: age,
+            birthdate: birthdate
+        };
+
+        data.push(arr);
+        if (data[0] == undefined) {
+            alert("Student is not found..");
+        }
+        alert("Data added sucessfully..");
+        localStorage.setItem("udata", JSON.stringify(data));
+    }
+    form.reset();
+    tabledata();
 }
 
 function deletedata() {
@@ -78,7 +112,6 @@ function tabledata() {
     deletedata();
     updatedata();
 }
-tabledata();
 
 function updatedata() {
     let update = document.getElementsByClassName("update");
@@ -135,41 +168,4 @@ function updatedata() {
 
         }
     }
-}
-
-submit.onclick = function () {
-    let modal = document.getElementById("modal");
-    let table = document.getElementById("table");
-    modal.style.display = "none";
-    table.style.display = "block";
-
-    let rollno = document.getElementById("rollno").value;
-    let name = document.getElementById("name").value;
-    let gender = document.getElementById("gender").value;
-    let age = document.getElementById("age").value;
-    let birthdate = document.getElementById("birthdate").value;
-
-    if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
-        alert("Please, Enter valid data..")
-    }
-    else {
-        let arr = {
-            rollno: rollno,
-            name: name,
-            gender: gender,
-            age: age,
-            birthdate: birthdate
-        };
-
-        data.push(arr);
-        if (data[0] == undefined) {
-            alert("Student is not found..");
-        }
-        alert("Data added sucessfully..");
-        localStorage.setItem("udata", JSON.stringify(data));
-
-    }
-
-    form.reset();
-    tabledata();
 }

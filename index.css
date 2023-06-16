@@ -61,6 +61,17 @@
     outline: none;
 }
 
+.con {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.table {
+    margin-top: 30px;
+}
+
 .table p {
     text-align: center;
     color: var(--bcolor);
@@ -68,12 +79,6 @@
     text-decoration: underline double;
     font-weight: bold;
     margin: 10px 0px;
-}
-
-.table {
-    margin-top: 30px;
-    flex-shrink: 4;
-    
 }
 
 table thead th {
@@ -84,19 +89,13 @@ table thead th {
     box-shadow: 0px 5px 10px black;
 }
 
-table tbody td{
+table tbody td {
     text-align: center;
     /* padding: 2px 0px; */
     font-size: var(--size);
-    box-shadow: 0px 0px 10px black;  
+    box-shadow: 0px 0px 10px black;
 }
 
-.con {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-}
 
 .modal {
     display: flex;
@@ -107,15 +106,18 @@ table tbody td{
     display: none;
     animation: open 1s 1 ease-in-out;
 }
+
 @keyframes open {
-    from{
+    from {
         opacity: 0;
         transform: rotateX(100deg);
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
+
 .modal form {
     padding: 0px 34px;
     border: 2px solid rgb(22, 11, 31);
@@ -178,52 +180,60 @@ table tbody td{
     left: 32px;
     opacity: .7;
 }
+
 .modal #close:hover,
-.modal #u-close:hover{
+.modal #u-close:hover,
+.modal #close:active,
+.modal #u-close:active {
     opacity: 1;
 }
 
 @media (max-width: 1110px) {
-    :root{
-        --size:16px;
+    :root {
+        --size: 16px;
     }
-    table thead th{
+
+    table thead th {
         padding: 5px 30px;
     }
 }
 
 @media (max-width: 950px) {
-    table thead th{
+    table thead th {
         padding: 5px 25px;
     }
 }
 
 @media (max-width: 680px) {
-    :root{
-        --size:13px;
+    :root {
+        --size: 13px;
     }
-    table thead th{
+
+    table thead th {
         padding: 5px 15px;
     }
 }
 
 @media (max-width: 508px) {
-    table thead th{
+    table thead th {
         padding: 5px 5px;
     }
-    .navbar p{
+
+    .navbar p {
         font-size: 25px;
     }
 }
 
 @media (max-width: 408px) {
-    :root{
-        --size:10px;
+    :root {
+        --size: 10px;
     }
-    table thead th{
+
+    table thead th {
         padding: 5px 2px;
     }
-    .navbar p{
+
+    .navbar p {
         font-size: 20px;
     }
 }
