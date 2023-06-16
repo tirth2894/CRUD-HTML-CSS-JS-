@@ -92,8 +92,8 @@ function deletedata() {
 
             if (window.confirm("are you sure to delete ?")) {
                 data.splice(ind, 1);
+                localStorage.setItem("udata",JSON.stringify(data));
             }
-            localStorage.setItem("udata", JSON.stringify(data));
             tabledata();
         }
     }

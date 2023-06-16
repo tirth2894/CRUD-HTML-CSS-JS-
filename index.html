@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <div class="ani"></div>
+
     <div class="navbar">
         <p>T R School Of Computer</p>
     </div>
+    <div class="ani"></div>
+    
+    
     <div class="button">
         <input type="text" name="search" id="search" placeholder="Search">
         <div class="b">
@@ -58,7 +63,7 @@
                 </div>
             </form>
     
-            <div class="box">
+            <div class="box" id="box1">
                 <button class="btn" type="submit" id="submit"> Submit </button>
             </div>
         </div>
@@ -102,16 +107,17 @@
                 </div>
     
             </form>
-            <div class="box">
+            <div class="box" id="box1">
                 <button class="btn" type="submit" id="u-submit"> Update </button>
             </div>
         </div>
     </div>
 
     <div class="con">
+        
         <div class="table" id="table">
+            <p>Student list</p>
             <table>
-                <p>Student list</p>
                 <thead>
                     <th>Roll no</th>
                     <th>Name</th>
@@ -124,6 +130,7 @@
                 </tbody>
             </table>
         </div>
+
     </div>
 
     <script src="index.js"></script>
