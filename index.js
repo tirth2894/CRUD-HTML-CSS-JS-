@@ -1,21 +1,19 @@
 const data = [];
 let temp = localStorage.getItem("udata");
-if(temp == null)
-{
+if (temp == null) {
     t = undefined;
-    localStorage.setItem("udata",JSON.stringify(t));
+    localStorage.setItem("udata", JSON.stringify(t));
 }
-else{
+else {
     temp = JSON.parse(temp);
 
-    for(let i = 0;i<temp.length;i++)
-    {
+    for (let i = 0; i < temp.length; i++) {
         let t = {
-            rollno : temp[i].rollno,
-            name : temp[i].name,
-            gender : temp[i].gender,
-            age : temp[i].age,
-            birthdate : temp[i].birthdate 
+            rollno: temp[i].rollno,
+            name: temp[i].name,
+            gender: temp[i].gender,
+            age: temp[i].age,
+            birthdate: temp[i].birthdate
         }
         data.push(t);
     }
@@ -57,10 +55,11 @@ function deletedata() {
         delet[x].onclick = function () {
             let tr = this.parentElement.parentElement;
             let ind = tr.getAttribute("index");
-            data.splice(ind,1);
-            alert("Data deleted Successfully...");
-            
-            localStorage.setItem("udata",JSON.stringify(data));
+
+            if (window.confirm("are you sure to delete ?")) {
+                data.splice(ind, 1);
+            }
+            localStorage.setItem("udata", JSON.stringify(data));
             tabledata();
         }
     }
@@ -68,12 +67,12 @@ function deletedata() {
 
 function tabledata() {
     print.innerHTML = "";
-    
+
     let index = 0;
     for (let x in data) {
         print.innerHTML +=
-        "<tr index=" + index + "> <td>" + data[x].rollno + "</td> <td>" + data[x].name + "</td> <td>" + data[x].gender + "</td> <td>" + data[x].age + "</td> <td>" + data[x].birthdate +
-        "</td> <td><button class='btn delete'> Delete </button> <button class='btn update'> Update </button></td> </tr>";
+            "<tr index=" + index + "> <td>" + data[x].rollno + "</td> <td>" + data[x].name + "</td> <td>" + data[x].gender + "</td> <td>" + data[x].age + "</td> <td>" + data[x].birthdate +
+            "</td> <td><button class='btn delete'> Delete </button> <button class='btn update'> Update </button></td> </tr>";
         index += 1;
     }
     deletedata();
@@ -83,7 +82,7 @@ tabledata();
 
 function updatedata() {
     let update = document.getElementsByClassName("update");
-    
+
     for (let i = 0; i < data.length; i++) {
         update[i].onclick = function () {
             let tr = this.parentElement.parentElement;
@@ -92,25 +91,25 @@ function updatedata() {
             let table = document.getElementById("table");
             modal.style.display = "block";
             table.style.display = "none";
-            
+
             let rollno = document.getElementById("u-rollno");
             let name = document.getElementById("u-name");
             let gender = document.getElementById("u-gender");
             let age = document.getElementById("u-age");
             let birthdate = document.getElementById("u-birthdate");
-            
+
             rollno.value = data[index].rollno;
             name.value = data[index].name;
             gender.value = data[index].gender;
             age.value = data[index].age;
             birthdate.value = data[index].birthdate;
-            
+
             u_submit.onclick = function () {
                 let modal = document.getElementById("u-modal");
                 let table = document.getElementById("table");
                 modal.style.display = "none";
                 table.style.display = "block";
-                
+
                 rollno = document.getElementById("u-rollno").value;
                 name = document.getElementById("u-name").value;
                 gender = document.getElementById("u-gender").value;
@@ -121,7 +120,7 @@ function updatedata() {
                 if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
                     alert("Please, Enter valid data..")
                 }
-                else {
+                else if (window.confirm("Are you sure to update ?")) {
                     data[index] = {
                         rollno: rollno,
                         name: name,
@@ -129,10 +128,9 @@ function updatedata() {
                         age: age,
                         birthdate: birthdate
                     }
-                    alert("Data updated Successfully...");
-                    localStorage.setItem("udata",JSON.stringify(data));
-                    tabledata();
+                    localStorage.setItem("udata", JSON.stringify(data));
                 }
+                tabledata();
             }
 
         }
@@ -150,7 +148,7 @@ submit.onclick = function () {
     let gender = document.getElementById("gender").value;
     let age = document.getElementById("age").value;
     let birthdate = document.getElementById("birthdate").value;
-    
+
     if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
         alert("Please, Enter valid data..")
     }
@@ -162,15 +160,16 @@ submit.onclick = function () {
             age: age,
             birthdate: birthdate
         };
-        
+
         data.push(arr);
         if (data[0] == undefined) {
             alert("Student is not found..");
         }
-        localStorage.setItem("udata",JSON.stringify(data));
-        
+        alert("Data added sucessfully..");
+        localStorage.setItem("udata", JSON.stringify(data));
+
     }
-    
+
     form.reset();
-    tabledata();    
+    tabledata();
 }

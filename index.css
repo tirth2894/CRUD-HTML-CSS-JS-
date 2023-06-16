@@ -5,7 +5,7 @@
 }
 
 * {
-    font-family: cursive;
+    font-family: tahoma;
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -30,7 +30,7 @@
 }
 
 .btn {
-    padding: 10px;
+    padding: 4px;
     color: var(--color);
     background-color: var(--bcolor);
     font-size: var(--size);
@@ -71,13 +71,9 @@
 }
 
 .table {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
     margin-top: 30px;
     flex-shrink: 4;
+    
 }
 
 table thead th {
@@ -88,12 +84,11 @@ table thead th {
     box-shadow: 0px 5px 10px black;
 }
 
-table tbody td {
-
+table tbody td{
     text-align: center;
-    padding: 5px 0px;
+    /* padding: 2px 0px; */
     font-size: var(--size);
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 0px 10px black;  
 }
 
 .con {
@@ -110,13 +105,23 @@ table tbody td {
     color: var(--color);
     padding: 20px 0px;
     display: none;
+    animation: open 1s 1 ease-in-out;
 }
-
+@keyframes open {
+    from{
+        opacity: 0;
+        transform: rotateX(100deg);
+    }
+    to{
+        opacity: 1;
+    }
+}
 .modal form {
     padding: 0px 34px;
-    border: 5px solid rgb(22, 11, 31);
+    border: 2px solid rgb(22, 11, 31);
     background-color: var(--bcolor);
     border-radius: 30px;
+    box-shadow: 10px 10px 10px black;
 }
 
 .modal .box {
@@ -171,62 +176,54 @@ table tbody td {
     position: relative;
     top: -50px;
     left: 32px;
+    opacity: .7;
+}
+.modal #close:hover,
+.modal #u-close:hover{
+    opacity: 1;
 }
 
-@media (max-width: 1350px) {
-    table thead th {
-        padding: 5px 40px;
+@media (max-width: 1110px) {
+    :root{
+        --size:16px;
     }
-}
-
-@media (max-width: 900px) {
-    table thead th {
-        padding: 5px 20px;
-    }
-
-    table thead th,
-    table tbody td,
-    table tbody tr,
-    .btn {
-        font-size: 20px;
+    table thead th{
+        padding: 5px 30px;
     }
 }
 
-@media (max-width: 700px) {
-    table thead th {
-        padding: 5px 17px;
-    }
-
-    table thead th,
-    table tbody td,table tbody tr 
-    {
-        font-size: 17px;
-    }
-    .btn {
-        padding: 6px;
-    }
-    .btn,
-    .box>input[placeholder],
-    .modal .box,
-    .box>input {
-        font-size: 15px;
+@media (max-width: 950px) {
+    table thead th{
+        padding: 5px 25px;
     }
 }
 
-@media (max-width: 500px) {
-    table thead th {
+@media (max-width: 680px) {
+    :root{
+        --size:13px;
+    }
+    table thead th{
+        padding: 5px 15px;
+    }
+}
+
+@media (max-width: 508px) {
+    table thead th{
         padding: 5px 5px;
     }
-    table tbody tr,
-    table thead th,
-    table tbody td,
-    .box > input[placeholder],
-    .modal .box,
-    .box > input,
-    .btn {
-        font-size: 12px;
+    .navbar p{
+        font-size: 25px;
     }
-    #search {
-        font-size: 17px;
+}
+
+@media (max-width: 408px) {
+    :root{
+        --size:10px;
+    }
+    table thead th{
+        padding: 5px 2px;
+    }
+    .navbar p{
+        font-size: 20px;
     }
 }
