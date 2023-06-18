@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <title>Student data</title>
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
     <div class="ani"></div>
 
@@ -14,8 +16,8 @@
         <p>T R School Of Computer</p>
     </div>
     <div class="ani"></div>
-    
-    
+
+
     <div class="button">
         <input type="text" name="search" id="search" placeholder="Search">
         <div class="b">
@@ -27,85 +29,100 @@
         </div>
     </div>
 
+    <div class="container">
+        <label for="course">Course : </label>
+        <select name="course" id="course">
+            <option value=""></option>
+            <option value="cs">Msc(CS)</option>
+            <option value="mca">MCA</option>
+            <option value="pgdca">PGDCA</option>
+            <option value="aiml">Msc(AIML)</option>
+        </select>
+    </div>
+    <p id="alert"></p>
+
+    <div class="ani"></div>
+
+
     <div class="con">
         <div class="modal" id="modal">
             <form id="form">
                 <img src="close.png" alt="Close" id="close">
-                
-                <div class="box">                
+
+                <div class="box">
                     <label for="rollno">Rollno : </label>
                     <input type="text" name="rollno" id="rollno" placeholder="Enter your Rollno">
                 </div>
-                
+
                 <div class="box">
                     <label for="name">name : </label>
-                    <input type="text" name="name" id="name" placeholder="Enter your Name" >
+                    <input type="text" name="name" id="name" placeholder="Enter your Name">
                 </div>
-                
+
                 <div class="box">
                     <label for="gender">Gender : </label>
-                    <select name="gender" id="gender" >
+                    <select name="gender" id="gender">
                         <option value="" selected> </option>
                         <option value="Male"> Male </option>
                         <option value="Female"> Female </option>
                         <option value="Other"> Others </option>
                     </select>
                 </div>
-                
+
                 <div class="box">
                     <label for="age">Age : </label>
-                    <input type="text" name="age" id="age" placeholder="Enter your Age" >
+                    <input type="number" name="age" id="age" placeholder="Enter your Age">
                 </div>
-                
+
                 <div class="box">
                     <label for="birthdate">Birth date : </label>
-                    <input type="date" name="birthdate" id="birthdate" placeholder="Enter your Birthdate" >
+                    <input type="date" name="birthdate" id="birthdate" placeholder="Enter your Birthdate">
                 </div>
             </form>
-    
+
             <div class="box" id="box1">
                 <button class="btn" type="submit" id="submit"> Submit </button>
             </div>
         </div>
     </div>
 
-    
-    
+
+
     <div class="con">
         <div class="modal" id="u-modal">
             <form id="u-form">
                 <img src="close.png" alt="Close" id="u-close">
-                
-                <div class="box">                
+
+                <div class="box">
                     <label for="u-rollno">Rollno : </label>
                     <input type="text" name="u-rollno" id="u-rollno" placeholder="Enter your Rollno">
                 </div>
-                
+
                 <div class="box">
                     <label for="u-name">name : </label>
-                    <input type="text" name="u-name" id="u-name" placeholder="Enter your Name" >
+                    <input type="text" name="u-name" id="u-name" placeholder="Enter your Name">
                 </div>
-                
+
                 <div class="box">
                     <label for="u-gender">Gender : </label>
-                    <select name="u-gender" id="u-gender" >
+                    <select name="u-gender" id="u-gender">
                         <option value="" selected> </option>
                         <option value="Male"> Male </option>
                         <option value="Female"> Female </option>
                         <option value="Other"> Others </option>
                     </select>
                 </div>
-                
+
                 <div class="box">
                     <label for="u-age">Age : </label>
-                    <input type="text" name="u-age" id="u-age" placeholder="Enter your Age" >
+                    <input type="number" name="u-age" id="u-age" placeholder="Enter your Age">
                 </div>
-                
+
                 <div class="box">
                     <label for="u-birthdate">Birth date : </label>
-                    <input type="date" name="u-birthdate" id="u-birthdate" placeholder="Enter your Birthdate" >
+                    <input type="date" name="u-birthdate" id="u-birthdate" placeholder="Enter your Birthdate">
                 </div>
-    
+
             </form>
             <div class="box" id="box1">
                 <button class="btn" type="submit" id="u-submit"> Update </button>
@@ -114,7 +131,7 @@
     </div>
 
     <div class="con">
-        
+
         <div class="table" id="table">
             <p>Student list</p>
             <table>
@@ -135,4 +152,5 @@
 
     <script src="index.js"></script>
 </body>
+
 </html>

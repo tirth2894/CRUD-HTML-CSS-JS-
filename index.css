@@ -74,6 +74,33 @@
     outline: none;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: var(--size);
+    color: var(--bcolor);
+    margin: 10px 0px;
+}
+.container > label{
+    font-weight: bold;
+}
+.container > select{
+    border-radius: 10px;
+    margin-left: 5px;
+    color: var(--color);
+    background-color: var(--bcolor);
+    font-size: var(--size);
+}
+
+#alert{
+    color: var(--bcolor);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 .con {
     display: flex;
     justify-content: center;
@@ -120,6 +147,7 @@ table tbody td {
     padding: 20px 0px;
     display: none;
     animation: open 1s 1 ease-in-out;
+    margin: 25px 0px;
 }
 
 @keyframes open {

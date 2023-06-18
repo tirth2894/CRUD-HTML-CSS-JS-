@@ -1,5 +1,9 @@
-const data = [];
+const cs = [];
+const mca = [];
+const pgdca = [];
+const aiml = [];
 
+let course = document.getElementById("course");
 let close = document.getElementById("close");
 let addbtn = document.getElementById("addbtn");
 let submit = document.getElementById("submit");
@@ -9,23 +13,11 @@ let form = document.getElementById("form");
 let u_submit = document.getElementById("u-submit");
 let u_close = document.getElementById("u-close");
 
-let temp = localStorage.getItem("udata");
-
-if (temp != null) {
-    temp = JSON.parse(temp);
-
-    for (let i = 0; i < temp.length; i++) {
-        let t = {
-            rollno: temp[i].rollno,
-            name: temp[i].name,
-            gender: temp[i].gender,
-            age: temp[i].age,
-            birthdate: temp[i].birthdate
-        }
-        data.push(t);
-    }
+if(course.value == "")
+{
+    let msg = document.getElementById("alert");
+    msg.innerHTML = "Please,Select course";
 }
-
 
 addbtn.onclick = function () {
     let modal = document.getElementById("modal");
@@ -46,9 +38,63 @@ u_close.onclick = function () {
     table.style.display = "block";
 }
 
-tabledata();
+course.onchange = function () {
+    let cour = course.value;
+    let msg = document.getElementById("alert");
+    let key = cour;
+
+    if(course.value == "")
+    {
+        msg.innerHTML = "Please select course";
+    }
+    else{
+        msg.innerHTML = "";
+    }
+
+    cs.splice(0, cs.length);
+    mca.splice(0, mca.length);
+    pgdca.splice(0, pgdca.length);
+    aiml.splice(0, aiml.length);
+
+    let temp = localStorage.getItem(key);
+
+    if (temp != null) {
+        temp = JSON.parse(temp);
+
+        for (let i = 0; i < temp.length; i++) {
+            let t = {
+                rollno: temp[i].rollno,
+                name: temp[i].name,
+                gender: temp[i].gender,
+                age: temp[i].age,
+                birthdate: temp[i].birthdate
+            }
+            switch (cour) {
+                case "cs":
+                    cs.push(t);
+                    break;
+
+                case "mca":
+                    mca.push(t);
+                    break;
+
+                case "pgdca":
+                    pgdca.push(t);
+                    break;
+
+                case "aiml":
+                    aiml.push(t);
+                    break;
+                case "":
+                    break;
+            }
+        }
+    }
+    tabledata();
+}
 
 submit.onclick = function () {
+    cour = course.value;
     let modal = document.getElementById("modal");
     let table = document.getElementById("table");
     modal.style.display = "none";
@@ -61,9 +107,15 @@ submit.onclick = function () {
     let birthdate = document.getElementById("birthdate").value;
 
     if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
-        alert("Please, Enter valid data..")
+        alert("Please, enter all data...");
+    }
+    else if(age < 0 || age > 110)
+    {
+        alert("Please, enter fill valid age...");
     }
     else {
+        let cour = course.value;
+
         let arr = {
             rollno: rollno,
             name: name,
@@ -72,18 +124,97 @@ submit.onclick = function () {
             birthdate: birthdate
         };
 
-        data.push(arr);
-        if (data[0] == undefined) {
-            alert("Student is not found..");
+        if (cour == "cs") {
+            let key = cour;
+            adata(cs, arr,key);
         }
-        alert("Data added sucessfully..");
-        localStorage.setItem("udata", JSON.stringify(data));
+        else if (cour == "mca") {
+            let key = cour;
+            adata(mca, arr,key);
+        }
+        else if (cour == "pgdca") {
+            let key = cour;
+            adata(pgdca, arr,key);
+        }
+        else if (cour == "aiml") {
+            let key = cour;
+            adata(aiml, arr,key);
+        }
+        else if (cour == "") {
+            alert("please select course..");
+        }
     }
+
     form.reset();
     tabledata();
 }
 
 function deletedata() {
+
+    let cour = course.value;
+    if (cour == "cs") {
+        let key = cour;
+        ddata(cs, key);
+    }
+    else if (cour == "mca") {
+        let key = cour;
+        ddata(mca, key);
+    }
+    else if (cour == "pgdca") {
+        let key = cour;
+        ddata(pgdca, key);
+    }
+    else if (cour == "aiml") {
+        let key = cour;
+        ddata(aiml, key);
+    }
+}
+
+function tabledata() {
+    let cour = course.value;
+    if(cour == "")
+    {
+        tdata();
+    }
+    else if(cour == "cs") {
+        tdata(cs);
+    }
+    else if (cour == "mca") {
+        tdata(mca);
+    }
+    else if (cour == "pgdca") {
+        tdata(pgdca);
+    }
+    else if (cour == "aiml") {
+        tdata(aiml);
+    }
+
+    deletedata();
+    updatedata();
+}
+
+function updatedata() {
+    let cour = course.value;
+
+    if (cour == "cs") {
+        let key = cour;
+        udata(cs, key);
+    }
+    else if (cour == "mca") {
+        let key = cour;
+        udata(mca, key);
+    }
+    else if (cour == "pgdca") {
+        let key = cour;
+        udata(pgdca, key);
+    }
+    else if (cour == "aiml") {
+        let key = cour;
+        udata(aiml, key);
+    }
+}
+
+function ddata(data, key) {
     let delet = document.getElementsByClassName("delete");
     for (let x in data) {
         delet[x].onclick = function () {
@@ -92,16 +223,15 @@ function deletedata() {
 
             if (window.confirm("are you sure to delete ?")) {
                 data.splice(ind, 1);
-                localStorage.setItem("udata",JSON.stringify(data));
+                localStorage.setItem(key, JSON.stringify(data));
             }
             tabledata();
         }
     }
 }
 
-function tabledata() {
+function tdata(data) {
     print.innerHTML = "";
-
     let index = 0;
     for (let x in data) {
         print.innerHTML +=
@@ -109,11 +239,10 @@ function tabledata() {
             "</td> <td><button class='btn delete'> Delete </button> <button class='btn update'> Update </button></td> </tr>";
         index += 1;
     }
-    deletedata();
-    updatedata();
 }
 
-function updatedata() {
+function udata(data, key) {
+
     let update = document.getElementsByClassName("update");
 
     for (let i = 0; i < data.length; i++) {
@@ -153,6 +282,10 @@ function updatedata() {
                 if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
                     alert("Please, Enter valid data..")
                 }
+                else if(age < 0 || age > 110)
+                {
+                    alert("Please enter valid age..");
+                }
                 else if (window.confirm("Are you sure to update ?")) {
                     data[index] = {
                         rollno: rollno,
@@ -161,11 +294,17 @@ function updatedata() {
                         age: age,
                         birthdate: birthdate
                     }
-                    localStorage.setItem("udata", JSON.stringify(data));
+                    localStorage.setItem(key, JSON.stringify(data));
                 }
                 tabledata();
             }
 
         }
     }
+}
+
+function adata(data, arr,key) {
+    data.push(arr);
+    localStorage.setItem(key, JSON.stringify(data));
+    alert("Data added sucessfully..");
 }
