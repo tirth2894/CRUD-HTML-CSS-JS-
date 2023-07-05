@@ -12,11 +12,11 @@ let showbtn = document.getElementById("showbtn");
 let form = document.getElementById("form");
 let u_submit = document.getElementById("u-submit");
 let u_close = document.getElementById("u-close");
+let msg = document.getElementById("msg");
 
-if(course.value == "")
-{
+if (course.value == "") {
     let msg = document.getElementById("alert");
-    msg.innerHTML = "Please,Select course";
+    msg.innerHTML = "Please, Select course";
 }
 
 addbtn.onclick = function () {
@@ -43,11 +43,10 @@ course.onchange = function () {
     let msg = document.getElementById("alert");
     let key = cour;
 
-    if(course.value == "")
-    {
-        msg.innerHTML = "Please select course";
+    if (course.value == "") {
+        msg.innerHTML = "Please, select course";
     }
-    else{
+    else {
         msg.innerHTML = "";
     }
 
@@ -106,12 +105,15 @@ submit.onclick = function () {
     let age = document.getElementById("age").value;
     let birthdate = document.getElementById("birthdate").value;
 
-    if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
-        alert("Please, enter all data...");
-    }
-    else if(age < 0 || age > 110)
-    {
-        alert("Please, enter fill valid age...");
+    if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "" || age < 0 || age > 110) {
+        msg.style.display = "block";
+        msg.classList.remove("success");
+        msg.classList.add("fail");
+        msg.innerHTML = "Please, Enter valid data.";
+
+        setTimeout(() => {
+            msg.style.display = "none"
+        }, 3000);
     }
     else {
         let cour = course.value;
@@ -126,22 +128,29 @@ submit.onclick = function () {
 
         if (cour == "cs") {
             let key = cour;
-            adata(cs, arr,key);
+            adata(cs, arr, key);
         }
         else if (cour == "mca") {
             let key = cour;
-            adata(mca, arr,key);
+            adata(mca, arr, key);
         }
         else if (cour == "pgdca") {
             let key = cour;
-            adata(pgdca, arr,key);
+            adata(pgdca, arr, key);
         }
         else if (cour == "aiml") {
             let key = cour;
-            adata(aiml, arr,key);
+            adata(aiml, arr, key);
         }
         else if (cour == "") {
-            alert("please select course..");
+            msg.style.display = "block";
+            msg.classList.remove("success");
+            msg.classList.add("fail");
+            msg.innerHTML = "Please, select course.";
+
+            setTimeout(() => {
+                msg.style.display = "none"
+            }, 3000);
         }
     }
 
@@ -172,11 +181,10 @@ function deletedata() {
 
 function tabledata() {
     let cour = course.value;
-    if(cour == "")
-    {
+    if (cour == "") {
         tdata();
     }
-    else if(cour == "cs") {
+    else if (cour == "cs") {
         tdata(cs);
     }
     else if (cour == "mca") {
@@ -224,6 +232,15 @@ function ddata(data, key) {
             if (window.confirm("are you sure to delete ?")) {
                 data.splice(ind, 1);
                 localStorage.setItem(key, JSON.stringify(data));
+
+                msg.style.display = "block";
+                msg.classList.remove("fail");
+                msg.classList.add("success");
+                msg.innerHTML = "Data deleted successfully.";
+
+                setTimeout(() => {
+                    msg.style.display = "none"
+                }, 3000);
             }
             tabledata();
         }
@@ -279,12 +296,15 @@ function udata(data, key) {
                 birthdate = document.getElementById("u-birthdate").value;
 
 
-                if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "") {
-                    alert("Please, Enter valid data..")
-                }
-                else if(age < 0 || age > 110)
-                {
-                    alert("Please enter valid age..");
+                if (rollno == "" || name == "" || gender == "" || age == "" || birthdate == "" || age < 0 || age > 110) {
+                    msg.style.display = "block";
+                    msg.classList.remove("success");
+                    msg.classList.add("fail");
+                    msg.innerHTML = "Please, Enter valid data.";
+
+                    setTimeout(() => {
+                        msg.style.display = "none"
+                    }, 3000);
                 }
                 else if (window.confirm("Are you sure to update ?")) {
                     data[index] = {
@@ -295,6 +315,15 @@ function udata(data, key) {
                         birthdate: birthdate
                     }
                     localStorage.setItem(key, JSON.stringify(data));
+
+                    msg.style.display = "block";
+                    msg.classList.remove("fail");
+                    msg.classList.add("success");
+                    msg.innerHTML = "Data updated successfully.";
+
+                    setTimeout(() => {
+                        msg.style.display = "none"
+                    }, 3000);
                 }
                 tabledata();
             }
@@ -303,8 +332,15 @@ function udata(data, key) {
     }
 }
 
-function adata(data, arr,key) {
+function adata(data, arr, key) {
     data.push(arr);
     localStorage.setItem(key, JSON.stringify(data));
-    alert("Data added sucessfully..");
+    msg.style.display = "block";
+    msg.classList.remove("fail");
+    msg.classList.add("success");
+    msg.innerHTML = "Date added successfully.";
+
+    setTimeout(() => {
+        msg.style.display = "none"
+    }, 3000);
 }
